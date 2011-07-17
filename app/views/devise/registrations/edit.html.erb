@@ -1,0 +1,36 @@
+<h2>Editar registro</h2>
+
+<div id="stylized" class="myform">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	  <%= devise_error_messages! %>
+		
+		<h1>Formulario para editar registro</h1>
+		<p>Inserte el contenido como se indica</p>
+		
+		<label for="register_email">Email
+			<span class="small">Introduzca su cuenta de correo</span>
+		</label>
+	  <%= f.email_field :email %>
+
+		<label for="register_password">Contraseña
+			<span class="small">Déjelo en blanco para no cambiarla</span>
+		</label>
+	  <%= f.password_field :password %>
+
+	  <label for="register_password_confirmation">Confirmación Contraseña
+			<span class="small"></span>
+		</label>
+	  <%= f.password_field :password_confirmation %>
+	
+		<label for="register_current_password">Contraseña actual
+			<span class="small">Para confirmar cambios</span>
+		</label>
+		<%= f.password_field :current_password %>
+
+	  <%= f.submit "Modificar", :class => "button" %>
+		
+		<div class="spacer"></div>
+	<% end %>
+</div>
+
+<%= link_to "Back", :back %>

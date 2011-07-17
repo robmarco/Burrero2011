@@ -1,0 +1,33 @@
+<h2>Identificarse</h2>
+
+<div id="stylized" class="myform">
+
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  
+		<h1>Formulario de identificación</h1>
+		<p>Inserte el contenido como se indica</p>
+		
+		
+		<label for="register_email">Email
+			<span class="small">Introduzca su cuenta de correo</span>
+		</label>
+		<%= f.email_field :email %>
+
+	  <label for="session_password">Contraseña
+			<span class="small">Introduzca su password</span>
+		</label>
+	  <%= f.password_field :password %>
+
+	  <% if devise_mapping.rememberable? -%>
+	    <label for="session_remember">Recordar contraseña
+				<span class="small"></span>
+			</label>
+			<%= f.check_box :remember_me %>
+	  <% end -%>
+
+	  <%= f.submit "Enviar", :class => "button" %>
+
+		<div class="spacer"></div>
+	<% end %>
+
+</div>

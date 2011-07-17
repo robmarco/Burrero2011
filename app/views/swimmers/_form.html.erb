@@ -1,0 +1,114 @@
+<div id="stylized" class="myform">
+<%= form_for([@event,@swimmer]) do |f| %>
+  <% if @swimmer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@swimmer.errors.count, "errore") %> encontrados en el formulario:</h2>
+			<br />
+      <ul>
+      <% @swimmer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+			<br />
+    </div>
+  <% end %>
+
+	<h1>Formulario de Inscripci&oacute;n</h1>
+	<p>Inserte el contenido como se indica</p>
+
+	<label for="inscription_name">Nombre
+		<span class="small">Introduzca su nombre</span>
+	</label>
+	<%= f.text_field :name %>
+	  
+	<label for="inscription_sec_name">Apellidos
+		<span class="small">Introduzca sus apellidos</span>
+	</label>
+	<%= f.text_field :secname %>
+	
+	<label for="inscription_prueba">Prueba
+		<span class="small">1500m o 3000m</span>
+	</label>
+	<select id="inscription_prueba" name="swimmer[prueba]">
+		<option value="1500">1500m</option>
+		<option value="3000">3000m</option>
+	</select>
+	
+	<label for="inscription_dni">DNI
+		<span class="small">8 Dígitos sin letra</span>
+	</label>
+	<%= f.text_field :dni %>
+	
+	<label for="inscription_year">Año nacimiento
+		<span class="small">Seleccione un valor</span>
+	</label>
+	<% if !params[:action].include?('edit') %>
+	<select id="inscription_year" name="swimmer[year]">
+		<% 1995.downto(1900) do |fecha| %>
+			<option value=<%= "#{fecha}" %>><%= fecha %></option>
+		<% end %>
+	</select>
+	<% else %>
+	<%= f.text_field :year %>
+	<% end %>
+		
+	<label for="inscription_genere">Género
+		<span class="small">Masculino o Femenino</span>
+	</label>
+	<select id="inscription_genere" name="swimmer[gen]">
+		<option value="Masculino">Masculino</option>
+		<option value="Femenino">Femenino</option>
+	</select>
+		
+	<label for="inscription_dir">Dirección
+		<span class="small">Ingrese su dirección</span>
+	</label>
+	<%= f.text_field :dir %>
+		
+	<label for="inscription_pob">Población
+		<span class="small">Ingrese su población</span>
+	</label>
+	<%= f.text_field :pob %>
+		
+	<label for="inscription_postal">Código Postal
+		<span class="small">Ejemplo: 35250</span>
+	</label>
+	<%= f.text_field :postal %>
+		
+	<label for="inscription_prov">Provincia	
+		<span class="small">Ingrese su provincia</span>
+	</label>
+	<%= f.text_field :prov %>
+		
+	<label for="inscription_email">Email
+		<span class="small">Inserte un email válido</span>
+	</label>
+	<%= f.text_field :email %>
+	
+	<label for="inscription_phone">Teléfono fijo
+		<span class="small">Facilite un número de fijo</span>
+	</label>
+	<%= f.text_field :phone %>    
+	  
+	<label for="inscription_club">Club
+		<span class="small"><u>Independiente</u> en caso de no pertenecer a un club</span>
+	</label>
+	<%= f.text_field :club %>
+	  
+	<label for="inscription_fed">Federado</label>
+	<select id="inscription_fed" name="swimmer[fed]">
+		<option value="Si">Si</option>
+		<option value="No">No</option>
+	</select>
+	  	
+	<%= f.hidden_field :paid, :value => true %>
+	
+	<% if !@event.closed? || params[:action].include?('edit') %>
+		<%= f.submit "Enviar", :class => "button" %>
+	<% else %>
+		<div class="spacer"></div>
+		<div class="closed_event">Evento Cerrado</div>
+	<% end %>
+	<div class="spacer"></div>
+<% end %>
+</div>

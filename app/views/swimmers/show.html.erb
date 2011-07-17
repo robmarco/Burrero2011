@@ -1,0 +1,91 @@
+<% if notice %><p id="notice"><%= notice %></p><% end %>
+<div class="content_wrapper">
+	<div id="left_w">
+		<div id="stylized" class="myform">
+			<center><h1>Datos de la Inscripci&oacute;n</h1></center>
+			<p>Estos son los datos con los que ha sido dado de alta en el sistema. En caso de error, ponerse en contacto a través de <b><%= @event.contact_email %></b> o llamando a <b><%= @event.contact_phone %></b></p>
+		
+			<label for="inscription_name">Nombre
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.name %></div>
+			
+			<label for="inscription_secname">Apellidos
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.secname %></div>
+			
+			<label for="inscription_gen">Género
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.gen %></div>
+			
+			<label for="inscription_email">Email
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.email %></div>
+			
+			<label for="inscription_phone">Teléfono
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.phone %></div>
+			
+			<label for="inscription_dni">DNI
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.dni %></div>
+			
+			<label for="inscription_club">Club
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.club %></div>
+			
+			<label for="inscription_fed">Federado
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.fed %></div>
+			
+			<label for="inscription_year">Año nacimiento
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.year %></div>
+			
+			<label for="inscription_pob">Población
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.pob %></div>
+			
+			<label for="inscription_postal">Código postal
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.postal %></div>
+			
+			<label for="inscription_prov">Provincia
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.prov %></div>
+			
+			<label for="inscription_dir">Dirección
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.dir %></div>
+			
+			<label for="inscription_prueba">Prueba
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.prueba %> m</div>
+			
+			<label for="inscription_cat">Categoría
+				<span class="small"></span>
+			</label>
+			<div class="dato"><%= @swimmer.cat %></div>
+			
+			<div class="spacer"></div>
+		</div>
+		<br />
+		<%= link_to 'Atrás', :back %> | 
+		<%= link_to 'Ver listado de inscritos', event_swimmers_url(@event) %>
+	</div>
+	<%= render 'right' %>	
+</div>
+<div class="clear"></div>

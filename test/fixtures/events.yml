@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  closed: false
+  contact_email: MyString
+  contact_phone: 1
+
+two:
+  closed: false
+  contact_email: MyString
+  contact_phone: 1

@@ -1,0 +1,20 @@
+<div class="slideshow">
+	<ul id="slide-images">
+		<li><%= image_tag "slide0.jpg" %></li>
+		<li><%= image_tag "slide1.jpg" %></li>
+		<li><%= image_tag "slide1.jpg" %></li>
+	</ul>
+</div>
+
+<div class="slideshow_shadow"></div>
+
+<div class="content_wrapper">
+	<div id="left_w">
+		<h2>Editar inscrito</h2><br />
+		<%= render 'form' %>
+	</div>
+	<%= render 'right' %>	
+</div>
+<div class="clear"></div>
+
+<br /><%= link_to 'Atrás', :back %>

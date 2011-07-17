@@ -1,0 +1,40 @@
+<p id="error2">Si comentes algún error en la inscripción, ponte en contacto a través del email <b><%= "#{@event.contact_email}" %></b> o del teléfono <b><%= "#{@event.contact_phone}" %></b>. Recuerda que este listado es <b>provisional</b>, con lo que deberás estar atento al listado final que será publicado en el plazo establecido.<br /><br />
+Tal y como se especifica en la normativa, aquellas personas que se inscribieron en Gando 2010 y luego no participaron, se excluirán del listado de inscritos hasta que se complete el período de inscripciones.</p>
+<br />
+
+<table>
+  <tr>
+		<th></th>
+    <th>Apellidos</th>
+		<th>Nombre</th>
+    <th>Género</th>
+    <th>Club</th>
+    <th>Prueba</th>
+		<th>Año</th>    
+    <th>Categoría</th>
+    <% if user_signed_in? %>
+			<th></th>
+		<% end %>
+  </tr>
+<% @i = 1 %>
+<% @swimmers.each do |swimmer| %>
+  <tr>
+		<td><%= @i %></td>
+    <td><%= swimmer.secname %></td>
+		<td><%= swimmer.name %></td>
+    <td><%= swimmer.gen %></td>
+    <td><%= swimmer.club %></td>
+		<td><%= swimmer.prueba %> m</td>
+    <td><%= swimmer.year %></td>
+		<td><%= swimmer.cat %></td>
+    <% if user_signed_in? %>
+    	<td><u><%= link_to 'Edit', edit_event_swimmer_path(@event, swimmer) %></u></td>
+  	<% end %>
+	</tr>
+	<% @i = @i+1 %>
+<% end %>
+</table>
+
+<br />
+
+
