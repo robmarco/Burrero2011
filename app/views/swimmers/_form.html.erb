@@ -29,11 +29,15 @@
 	<label for="inscription_prueba">Prueba
 		<span class="small">1500m o 3000m</span>
 	</label>
+	<% if !params[:action].include?('edit') %>
 	<select id="inscription_prueba" name="swimmer[prueba]">
 		<option></option>
 		<option value="1500">1500m</option>
 		<option value="3000">3000m</option>
 	</select>
+	<% else %>
+	<%= f.text_field :prueba %>
+	<% end %>
 	
 	<label for="inscription_dni">DNI
 		<span class="small">8 Dígitos sin letra</span>
@@ -53,15 +57,19 @@
 	<% else %>
 	<%= f.text_field :year %>
 	<% end %>
-		
+			
 	<label for="inscription_genere">Género
 		<span class="small">Masculino o Femenino</span>
 	</label>
+	<% if !params[:action].include?('edit') %>
 	<select id="inscription_genere" name="swimmer[gen]">
 		<option></option>
 		<option value="Masculino">Masculino</option>
 		<option value="Femenino">Femenino</option>
 	</select>
+	<% else %>
+	<%= f.text_field :gen %>
+	<% end %>
 		
 	<label for="inscription_dir">Dirección
 		<span class="small">Ingrese su dirección</span>
@@ -99,11 +107,15 @@
 	<%= f.text_field :club %>
 	  
 	<label for="inscription_fed">Federado</label>
+	<% if !params[:action].include?('edit') %>
 	<select id="inscription_fed" name="swimmer[fed]">
 		<option></option>
 		<option value="Si">Si</option>
 		<option value="No">No</option>
 	</select>
+	<% else %>
+	<%= f.text_field :fed %>
+	<% end %>
 	  	
 	<%= f.hidden_field :paid, :value => true %>
 	
