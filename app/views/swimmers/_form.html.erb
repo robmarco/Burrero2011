@@ -30,6 +30,7 @@
 		<span class="small">1500m o 3000m</span>
 	</label>
 	<select id="inscription_prueba" name="swimmer[prueba]">
+		<option></option>
 		<option value="1500">1500m</option>
 		<option value="3000">3000m</option>
 	</select>
@@ -44,6 +45,7 @@
 	</label>
 	<% if !params[:action].include?('edit') %>
 	<select id="inscription_year" name="swimmer[year]">
+		<option></option>
 		<% 1995.downto(1900) do |fecha| %>
 			<option value=<%= "#{fecha}" %>><%= fecha %></option>
 		<% end %>
@@ -56,6 +58,7 @@
 		<span class="small">Masculino o Femenino</span>
 	</label>
 	<select id="inscription_genere" name="swimmer[gen]">
+		<option></option>
 		<option value="Masculino">Masculino</option>
 		<option value="Femenino">Femenino</option>
 	</select>
@@ -97,6 +100,7 @@
 	  
 	<label for="inscription_fed">Federado</label>
 	<select id="inscription_fed" name="swimmer[fed]">
+		<option></option>
 		<option value="Si">Si</option>
 		<option value="No">No</option>
 	</select>
