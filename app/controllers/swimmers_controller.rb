@@ -1,5 +1,5 @@
 class SwimmersController < ApplicationController
-  before_filter :authenticate_user!, :only => [:edit, :export]
+  before_filter :authenticate_user!, :only => [:edit, :export, :destroy]
   
   # GET /swimmers
   # GET /swimmers.xml
