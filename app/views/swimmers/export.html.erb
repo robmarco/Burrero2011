@@ -1,0 +1,28 @@
+<table border="1">
+  <tr>
+		<th>ID</th>
+    <th>Apellidos</th>
+		<th>Nombre</th>
+		<th>DNI</th>
+		<th>Año</th>
+		<th>Categoría</th>
+		<th>Género</th>
+		<th>Club</th>
+		<th>Prueba</th>
+		<th>Federado</th>
+  </tr>
+  <% @swimmers.each do |s| %>
+  <tr>
+		<td><%= s.id %></td>
+   	<td><%= s.secname %></td>
+		<td><%= s.name %></td>
+		<td><%= s.dni %></td>
+		<td><%= s.year %></td>
+		<td><%= s.cat %></td>
+		<td><%= s.gen %></td>
+		<td><%= s.club %></td>
+		<td><%= s.prueba %></td>
+		<td><%= s.fed %></td>		
+  <% end %>
+ </tr>
+</table>

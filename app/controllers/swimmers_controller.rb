@@ -1,5 +1,5 @@
 class SwimmersController < ApplicationController
-  before_filter :authenticate_user!, :only => [:edit, :show]
+  before_filter :authenticate_user!, :only => [:edit, :export]
   
   # GET /swimmers
   # GET /swimmers.xml
@@ -88,5 +88,12 @@ class SwimmersController < ApplicationController
       format.html { redirect_to(event_swimmers_url(@event)) }
       format.xml  { head :ok }
     end
+  end
+  
+  def export
+    headers['Content-Type'] = "application/vnd.ms-excel"
+    headers['Content-Disposition'] = 'attachment; filename="listado_inscritos.xls"'
+    headers['Cache-Control'] = ''
+    @swimmers = Swimmer.all
   end
 end

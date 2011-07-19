@@ -5,6 +5,7 @@ Gando2011R3::Application.routes.draw do
     resources :swimmers
   end
 
+  match 'export/swimmers' => 'swimmers#export'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
