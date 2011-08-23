@@ -3,7 +3,7 @@ class Swimmer < ActiveRecord::Base
   
   belongs_to :event
   
-  validates_presence_of :name, :secname, :gen, :email, :phone, :dni, :club, :fed, :year, :pob, :postal, :prov, :dir, :prueba,
+  validates_presence_of :name, :secname, :gen, :email, :phone, :dni, :club, :fed, :year, :pob, :postal, :prov, :dir, :size,
                         :message => "no puede estar en blanco"
   
   validates_uniqueness_of :dni, :message => "Ya existe otro nadador con ese DNI"
@@ -19,11 +19,32 @@ class Swimmer < ActiveRecord::Base
   private
   
   def set_category
-    if self.prueba==1500
+    if (self.year >= 1987) and (self.year <= 2004)
+      if self.gen == "Masculino"
+        case self.year
+        when 2003..2004 then self.cat = "MINI"
+        when 2002 then self.cat = "PRE"
+        when 2000..2001 then self.cat = "BENJ"
+        when 1998..1999 then self.cat = "ALE"
+        when 1995..1997 then self.cat = "INF"
+        when 1993..1994 then self.cat = "JUN"
+        when 1987..1992 then self.cat = "ABS"
+        end
+      else
+        case self.year
+        when 2004 then self.cat = "MINI"
+        when 2003 then self.cat = "PRE"
+        when 2001..2002 then self.cat = "BENJ"
+        when 1999..2000 then self.cat = "ALE"
+        when 1997..1998 then self.cat = "INF"
+        when 1995..1996 then self.cat = "JUN"
+        when 1987..1994 then self.cat = "ABS"
+        end
+      end
+    else
       case self.year
-      when 1987..1995 then self.cat = "AB"
       when 1982..1986 then self.cat = "MA"
-      when 1977..1981 then self.cat = "MB"
+      when 1977..1982 then self.cat = "MB"
       when 1972..1976 then self.cat = "MC"
       when 1967..1971 then self.cat = "MD"
       when 1962..1966 then self.cat = "ME"
@@ -35,18 +56,11 @@ class Swimmer < ActiveRecord::Base
       when 1932..1936 then self.cat = "MK"
       when 1927..1931 then self.cat = "ML"
       when 1922..1926 then self.cat = "MM"
-      when 1900..1921 then self.cat = "ML"
+      when 1900..1921 then self.cat = "MN"
       end
-    else
-      if self.prueba==3000
-        case self.year
-        when 1982..1995 then self.cat = "AB"
-        when 1972..1981 then self.cat = "M30"
-        when 1962..1971 then self.cat = "M40"
-        when 1900..1961 then self.cat = "M50"
-        end
-      end
-    end       
+    end
+         
+      
   end
   
 end

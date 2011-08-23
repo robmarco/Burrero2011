@@ -1,5 +1,5 @@
 <p id="error2">Si comentes algún error en la inscripción, ponte en contacto a través del email <b><%= "#{@event.contact_email}" %></b> o del teléfono <b><%= "#{@event.contact_phone}" %></b>. Recuerda que este listado es <b>provisional</b>, con lo que deberás estar atento al listado final que será publicado en el plazo establecido.<br /><br />
-Tal y como se especifica en la normativa, aquellas personas que se inscribieron en Gando 2010 y luego no participaron, se excluirán del listado de inscritos hasta que se complete el período de inscripciones.</p>
+Semanalmente se irán actualizando los pagos, por lo que la inscripción no quedará cerrada hasta que se realice el pago correspondiente. Animamos a todos los participantes a que se lean detenidamente las bases de la travesía.</p>
 <br />
 
 <table>
@@ -9,9 +9,9 @@ Tal y como se especifica en la normativa, aquellas personas que se inscribieron 
 		<th>Nombre</th>
     <th>Género</th>
     <th>Club</th>
-    <th>Prueba</th>
 		<th>Año</th>    
     <th>Categoría</th>
+		<th>Pagado</th>
     <% if user_signed_in? %>
 			<th></th>
 		<% end %>
@@ -19,14 +19,14 @@ Tal y como se especifica en la normativa, aquellas personas que se inscribieron 
 <% @i = 1 %>
 <% @swimmers.each do |swimmer| %>
   <tr>
-		<td><%= @i %></td>
-    <td><%= swimmer.secname %></td>
-		<td><%= swimmer.name %></td>
-    <td><%= swimmer.gen %></td>
-    <td><%= swimmer.club %></td>
-		<td><%= swimmer.prueba %> m</td>
-    <td><%= swimmer.year %></td>
-		<td><%= swimmer.cat %></td>
+		<td id="upc"><%= @i %></td>
+    <td id="upc"><%= swimmer.secname %></td>
+		<td id="upc"><%= swimmer.name %></td>
+    <td id="upc"><%= swimmer.gen %></td>
+    <td id="upc"><%= swimmer.club %></td>
+    <td id="upc"><%= swimmer.year %></td>
+		<td id="upc"><%= swimmer.cat %></td>
+		<td id="upc"><% if swimmer.paid? %> Si <% else %> No <% end %></td>
     <% if user_signed_in? %>
     	<td><u><%= link_to 'Edit', edit_event_swimmer_path(@event, swimmer) %></u></td>
   	<% end %>

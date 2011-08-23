@@ -8,8 +8,9 @@
 		<th>Categoría</th>
 		<th>Género</th>
 		<th>Club</th>
-		<th>Prueba</th>
 		<th>Federado</th>
+		<th>Talla</th>
+		<th>Pagado</th>
   </tr>
   <% @swimmers.each do |s| %>
   <tr>
@@ -21,8 +22,9 @@
 		<td><%= s.cat %></td>
 		<td><%= s.gen %></td>
 		<td><%= s.club %></td>
-		<td><%= s.prueba %></td>
-		<td><%= s.fed %></td>		
+		<td><%= s.fed %></td>
+		<td><%= s.size %></td>
+		<td><% if s.paid %>Si<% else %>No<% end %></td>		
   <% end %>
  </tr>
 </table>

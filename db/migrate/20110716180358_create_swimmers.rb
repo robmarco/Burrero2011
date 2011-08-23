@@ -15,8 +15,8 @@ class CreateSwimmers < ActiveRecord::Migration
       t.string :postal
       t.string :prov
       t.string :dir
-      t.integer :prueba
       t.string :cat
+      t.string :size
 
       t.timestamps
     end

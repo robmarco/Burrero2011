@@ -26,18 +26,6 @@
 	</label>
 	<%= f.text_field :secname %>
 	
-	<label for="inscription_prueba">Prueba
-		<span class="small">1500m o 3000m</span>
-	</label>
-	<% if !params[:action].include?('edit') %>
-	<select id="inscription_prueba" name="swimmer[prueba]">
-		<option></option>
-		<option value="1500">1500m</option>
-		<option value="3000">3000m</option>
-	</select>
-	<% else %>
-	<%= f.text_field :prueba %>
-	<% end %>
 	
 	<label for="inscription_dni">DNI
 		<span class="small">8 Dígitos sin letra</span>
@@ -50,7 +38,7 @@
 	<% if !params[:action].include?('edit') %>
 	<select id="inscription_year" name="swimmer[year]">
 		<option></option>
-		<% 1995.downto(1900) do |fecha| %>
+		<% 2004.downto(1900) do |fecha| %>
 			<option value=<%= "#{fecha}" %>><%= fecha %></option>
 		<% end %>
 	</select>
@@ -102,9 +90,65 @@
 	<%= f.text_field :phone %>    
 	  
 	<label for="inscription_club">Club
-		<span class="small"><u>Independiente</u> en caso de no pertenecer a un club</span>
+		<span class="small"><u>Independiente</u> en caso de no pertenecer a club de la lista</span>
 	</label>
+	<% if !params[:action].include?('edit') %>
+	<select id="inscription_club" name="swimmer[club]">
+		<option></option>
+		<option value="Independiente">Independiente</option>
+		<optgroup label="Clubes de natación">
+			<option value="AD Santa Cruz">AD Santa Cruz</option>
+			<option value="CD Herbania">CD Herbania</option>
+			<option value="CN 8 Septiembre">CN 8 Septiembre</option>
+			<option value="CN Aguacan">CN Aguacan</option>
+			<option value="CN Aguimayro">CN Aguimayro</option>
+			<option value="CN Belen Maria">CN Belén María</option>
+			<option value="CN Bentaculaguna"> CN Bentaculaguna</option>
+			<option value="CN Carucagua">CN Carucagua</option>
+			<option value="CN Ciudad Alta">CN Ciudad Alta</option>
+			<option value="CN Fainagua Telde">CN Fainagua Telde</option>
+			<option value="CN Jescagua">CN Jescagua Ingenio</option>
+			<option value="CN La Alameda">CN La Alameda</option>
+			<option value="CN Las Escuevas">CN Las Escuevas</option>
+			<option value="CN Las Palmas">CN Las Palmas</option>
+			<option value="CN Los Cristianos">CN Los Cristianos</option>
+			<option value="CN Martianez">CN Martianez</option>
+			<option value="CN Metropole">CN Metropole</option>
+			<option value="CN Nataldea">CN Nataldea</option>
+			<option value="CN Oceano">CN Océano</option>
+			<option value="CN Reales">CN Reales</option>
+			<option value="CN Salinas Sta Lucia">CN Salinas Sta Lucía</option>
+			<option value="CN Teimar">CN Teimar</option>
+			<option value="CN Tenerife Master">CN Tenerife Master</option>
+			<option value="CN Teneteide">CN Teneteide</option>
+			<option value="CN Valleverde">CN Valleverde</option>
+			<option value="CP Guia">CP Guía</option>
+			<option value="RC Nautico TF">RC Náutico TF</option>
+		</optgroup>
+		<optgroup label="Clubes de triatlón y otros">
+			<option value="AD Triton">AD Tritón</option>
+			<option value="Big Dutchman">Big Dutchman</option>
+			<option value="Club Amigos del Piraguismo">Club Amigos Piraguismo</option>
+			<option value="Club La Santa">Club La Santa</option>
+			<option value="CT Aguaverde">CT Aguaverde</option>
+			<option value="CT Calima Fuerteventura">CT Calima Fuerteventura</option>
+			<option value="CT Colombino">CT Colombino</option>
+			<option value="CT Finisher">CT Finisher</option>
+			<option value="CT Pejeverde">CT Pejeverde</option>
+			<option value="CT Playa Grande Lanzarote">CT Playa Grande Lanzarote</option>
+			<option value="CT Titanes">CT Titanes</option>
+			<option value="CT Triac">CT Triac</option>
+			<option value="CT Triamagro">CT Triamagro</option>
+			<option value="CT Tripto">CT Tripto</option>
+			<option value="Los Piratas">Los Piratas</option>
+			<option value="Taldea">Taldea</option>
+			<option value="Trampolín Toledo">Trampolín Toledo</option>
+			<option value="Trivalle">Trivalle</option>
+		</optgroup>
+	</select>
+	<% else %>
 	<%= f.text_field :club %>
+	<% end %>
 	  
 	<label for="inscription_fed">Federado</label>
 	<% if !params[:action].include?('edit') %>
@@ -116,8 +160,26 @@
 	<% else %>
 	<%= f.text_field :fed %>
 	<% end %>
-	  	
-	<%= f.hidden_field :paid, :value => true %>
+	
+	<label for="inscription_size">Talla Camiseta</label>
+	<% if !params[:action].include?('edit') %>
+	<select id="inscription_size" name="swimmer[size]">
+		<option></option>
+		<option value="S">S</option>
+		<option value="M">M</option>
+		<option value="L">L</option>
+		<option value="XL">XL</option>
+	</select>
+	<% else %>
+	<%= f.text_field :size %>
+	<% end %>
+	
+	<% if !params[:action].include?('edit') %>  	
+	<%= f.hidden_field :paid, :value => false %>
+	<% else %>
+	<label for="inscription_fed">Pagado</label>
+	<%= f.check_box :paid %>
+	<% end %>
 	
 	<% if !@event.closed? || params[:action].include?('edit') %>
 		<%= f.submit "Enviar", :class => "button" %>
@@ -125,6 +187,13 @@
 		<div class="spacer"></div>
 		<div class="closed_event">Evento Cerrado</div>
 	<% end %>
+	<div class="spacer"></div>
+	<h1>Declaración individual a partir de los 18 años</h1>
+	<small>El suscriptor de este formulario manifiesta que estoy físicamente en forma y que el medico no me ha informado de lo contrario. Reconozco que soy consciente de los riesgos inherentes a mi participación en la Travesía nado Burrero 2011, a celebrar el día 8 de Octubre, incluyendo la posible discapacidad o muerte y estoy dispuesto en asumir los riesgos.
+
+	Asimismo, renuncio a todas las demandas por reclamación por perdida o daño que puedan surgir de mi participación contra el organizador Club Natación Jescagua Ingenio contra cualquier persona que participe o colabore en la citada prueba.
+
+	Estoy conforme en acreditar, si para ello fuera requerido, lo anteriormente expuesto.</small>
 	<div class="spacer"></div>
 <% end %>
 </div>
