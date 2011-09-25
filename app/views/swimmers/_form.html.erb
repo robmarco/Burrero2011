@@ -38,7 +38,7 @@
 	<% if !params[:action].include?('edit') %>
 	<select id="inscription_year" name="swimmer[year]">
 		<option></option>
-		<% 2004.downto(1900) do |fecha| %>
+		<% 1986.downto(1900) do |fecha| %>
 			<option value=<%= "#{fecha}" %>><%= fecha %></option>
 		<% end %>
 	</select>

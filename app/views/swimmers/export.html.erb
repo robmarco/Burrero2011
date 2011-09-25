@@ -1,7 +1,7 @@
 <table border="1">
   <tr>
 		<th>ID</th>
-    <th>Apellidos</th>
+    <th style="text-transform: uppercase;">Apellidos</th>
 		<th>Nombre</th>
 		<th>DNI</th>
 		<th>Año</th>
@@ -11,20 +11,26 @@
 		<th>Federado</th>
 		<th>Talla</th>
 		<th>Pagado</th>
+		<th>Población</th>
+		<th>Dirección</th>
+		<th>Provincia</th>
   </tr>
   <% @swimmers.each do |s| %>
   <tr>
-		<td><%= s.id %></td>
-   	<td><%= s.secname %></td>
-		<td><%= s.name %></td>
-		<td><%= s.dni %></td>
-		<td><%= s.year %></td>
-		<td><%= s.cat %></td>
-		<td><%= s.gen %></td>
-		<td><%= s.club %></td>
-		<td><%= s.fed %></td>
-		<td><%= s.size %></td>
-		<td><% if s.paid %>Si<% else %>No<% end %></td>		
+		<td id="upc"><%= s.id %></td>
+   	<td id="upc"><%= s.secname.upcase %></td>
+		<td id="upc"><%= s.name.upcase %></td>
+		<td id="upc"><%= s.dni %></td>
+		<td id="upc"><%= s.year %></td>
+		<td id="upc"><%= s.cat.upcase %></td>
+		<td id="upc"><%= s.gen.upcase %></td>
+		<td id="upc"><%= s.club.upcase %></td>
+		<td id="upc"><%= s.fed.upcase %></td>
+		<td id="upc"><%= s.size %></td>
+		<td id="upc"><% if s.paid %>SI<% else %>NO<% end %></td>	
+		<td id="upc"><%= s.pob %></td>
+		<td id="upc"><%= s.dir %></td>
+		<td id="upc"><%= s.prov %></td>	
   <% end %>
  </tr>
 </table>

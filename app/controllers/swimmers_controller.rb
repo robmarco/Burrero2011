@@ -94,6 +94,6 @@ class SwimmersController < ApplicationController
     headers['Content-Type'] = "application/vnd.ms-excel"
     headers['Content-Disposition'] = 'attachment; filename="listado_inscritos.xls"'
     headers['Cache-Control'] = ''
-    @swimmers = Swimmer.all
+    @swimmers = Swimmer.all(:order => "id ASC")
   end
 end
