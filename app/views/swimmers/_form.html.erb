@@ -183,7 +183,7 @@
 	<label for="inscription_fed">Pagado</label>
 	<%= f.check_box :paid %>
 	<% end %>
-	<% if @event.swimmers.size<412 %>
+	<% if @event.swimmers.size<418 %>
 	  <% if !@event.closed? || params[:action].include?('edit') %>
 		  <%= f.submit "Enviar", :class => "button" %>
 	  <% else %>
