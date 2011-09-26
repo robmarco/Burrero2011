@@ -1,3 +1,6 @@
+<div id="notification">
+  Se ha ampliado el plazo de inscripciones un cupo de <b>25 plazas más</b> únicamente para adultos. El número de inscritos niños está cubierto. Cuando se llenen las plazas, el formulario de inscripciones se cerrará automáticamente.
+</div>
 <div id="stylized" class="myform">
 <%= form_for([@event,@swimmer]) do |f| %>
   <% if @swimmer.errors.any? %>
@@ -180,12 +183,16 @@
 	<label for="inscription_fed">Pagado</label>
 	<%= f.check_box :paid %>
 	<% end %>
-	
-	<% if !@event.closed? || params[:action].include?('edit') %>
-		<%= f.submit "Enviar", :class => "button" %>
+	<% if @event.swimmers.size<412 %>
+	  <% if !@event.closed? || params[:action].include?('edit') %>
+		  <%= f.submit "Enviar", :class => "button" %>
+	  <% else %>
+		  <div class="spacer"></div>
+		  <div class="closed_event">Evento Cerrado</div>
+	  <% end %>
 	<% else %>
-		<div class="spacer"></div>
-		<div class="closed_event">Evento Cerrado</div>
+	  <div class="spacer"></div>
+	  <div class="closed_event">Evento Cerrado</div>
 	<% end %>
 	<div class="spacer"></div>
 	<h1>Declaración individual a partir de los 18 años</h1>

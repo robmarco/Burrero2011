@@ -156,7 +156,9 @@ a:hover {
 /* Errors
 ---------------------------------------- */
 
-#notice, #error, #alert, #error2 {
+#modif { color: red;}
+
+#notice, #error, #alert, #error2, #notification {
   padding: 5px 8px;
   margin: 10px 0;
 }
@@ -171,6 +173,13 @@ a:hover {
   border: solid 1px #C66;
   text-align: justify;
 }
+
+#notification {
+	background-color: #FAF7AA;
+	border: solid 1px #f7ca75;
+	text-align: justify;
+}
+
 
 #error, #alert {
   background-color: #FCC;
